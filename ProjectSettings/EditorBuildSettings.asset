@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/KahootSelector.unity
+    guid: b70c14582db25ee4c9cbad39ba5034fa
+  - enabled: 1
+    path: Assets/Scenes/KahootGame.unity
+    guid: c2121cbe8d906fb41b4ca070796a28cd
   m_configObjects: {}
