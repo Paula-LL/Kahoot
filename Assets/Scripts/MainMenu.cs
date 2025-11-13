@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-   /* public void InputNameToPlay() {
-        SceneManager.LoadSceneAsync("");
-    }*/
+   public void InputNameToPlay() {
+        SceneManager.LoadSceneAsync("KahootSelector");
+    }
 }
