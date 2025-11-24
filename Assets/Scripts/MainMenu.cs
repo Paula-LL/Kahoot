@@ -8,4 +8,8 @@ public class MainMenu : MonoBehaviour
    public void InputNameToPlay() {
         SceneManager.LoadSceneAsync("KahootSelector");
     }
+
+    public void ClickToExitGame() { 
+        Application.Quit();
+    }
 }
