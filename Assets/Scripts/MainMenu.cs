@@ -12,4 +12,13 @@ public class MainMenu : MonoBehaviour
     public void ClickToExitGame() { 
         Application.Quit();
     }
+
+    public void ClickToPlay()
+    {
+        SceneManager.LoadSceneAsync("KahootGame");
+    }
+
+    public void ClickToMainMenu() {
+        SceneManager.LoadSceneAsync("MainMenu");
+    }
 }

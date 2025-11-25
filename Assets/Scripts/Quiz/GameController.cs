@@ -5,6 +5,7 @@ using TMPro;
 using System.Xml.Serialization;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
+
 public class GameController : MonoBehaviour
 {
     public TextMeshProUGUI questionDisplayText; 
@@ -67,7 +68,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void AnswerButtonCLicked(bool isCorrect) { 
+    public void AnswerButtonClicked(bool isCorrect) { 
         if (isCorrect)
         {
             playerScore += currentRoundData.pointsCorrectAnswers;
@@ -92,7 +93,7 @@ public class GameController : MonoBehaviour
     }
 
     public void ReturnToMenu() {
-        SceneManager.LoadScene("Menu"); /////////////////Change Scene
+        SceneManager.LoadScene("KahootSelector");
     }
 
     public void UpdateTimeRemeiningDisplay() { 
