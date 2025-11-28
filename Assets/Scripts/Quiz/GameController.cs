@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI questionDisplayText; 
     public TextMeshProUGUI scoreDisplayText;
     public TextMeshProUGUI timeRemainingDisplayText;
+    public TextMeshProUGUI highScoreDisplay;
 
     public SimpleObjectPool answerButtonObjectPool;
 
@@ -88,6 +89,9 @@ public class GameController : MonoBehaviour
     public void EndRound() {
         isRoundActive = false;
 
+        dataController.SubmitNewPlayerScore(playerScore);
+        highScoreDisplay.text = dataController.GetPlayerHighestScore().ToString();
+
         questionDisplay.SetActive(false);
         roundEndDisplay.SetActive(true);
     }
@@ -111,4 +115,6 @@ public class GameController : MonoBehaviour
             }
         }
     }
+
+
 }

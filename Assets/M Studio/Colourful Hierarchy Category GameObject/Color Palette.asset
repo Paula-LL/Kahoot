@@ -15,13 +15,13 @@ MonoBehaviour:
   colorDesigns:
   - keyChar: //
     textColor: {r: 0, g: 0, b: 0, a: 1}
-    backgroundColor: {r: 0, g: 0.6509434, b: 0.6509434, a: 1}
+    backgroundColor: {r: 1, g: 1, b: 1, a: 1}
     textAlignment: 4
-    fontStyle: 0
+    fontStyle: 1
   - keyChar: ///
     textColor: {r: 0, g: 0, b: 0, a: 1}
-    backgroundColor: {r: 0, g: 0.6152477, b: 1, a: 1}
-    textAlignment: 5
+    backgroundColor: {r: 1, g: 0.66068965, b: 0.23113209, a: 1}
+    textAlignment: 4
     fontStyle: 1
   - keyChar: '#'
     textColor: {r: 0, g: 0, b: 0, a: 1}
@@ -35,11 +35,11 @@ MonoBehaviour:
     fontStyle: 1
   - keyChar: $
     textColor: {r: 0, g: 0, b: 0, a: 1}
-    backgroundColor: {r: 0.75524956, g: 0.36470592, b: 0.83137256, a: 1}
+    backgroundColor: {r: 0.5896226, g: 0.87087405, b: 1, a: 1}
     textAlignment: 4
-    fontStyle: 0
+    fontStyle: 1
   - keyChar: ']'
     textColor: {r: 0, g: 0, b: 0, a: 1}
-    backgroundColor: {r: 0.36418653, g: 0.37528956, b: 0.8301887, a: 1}
+    backgroundColor: {r: 0.19339621, g: 0.4680643, b: 1, a: 1}
     textAlignment: 4
-    fontStyle: 0
+    fontStyle: 1
