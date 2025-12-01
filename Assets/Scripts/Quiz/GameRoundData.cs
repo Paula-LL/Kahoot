@@ -8,5 +8,5 @@ public class GameRoundData
     public string gameRoundName;
     public int timeLimit;
     public int pointsCorrectAnswers;
-    public QuestionData[] questions; 
+    public QuestionData[] questions;
 }

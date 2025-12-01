@@ -8,7 +8,7 @@ public class DataController : MonoBehaviour
 {
     private GameRoundData[] allRoundsData;
     private PlayerProgress playerProgress;
-    private string gameDataFileName = "Data.json";
+    public static string gameDataFileName = "Data.json";
 
     void Start()
     {
