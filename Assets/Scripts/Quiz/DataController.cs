@@ -10,7 +10,7 @@ public class DataController : MonoBehaviour
     private PlayerProgress playerProgress;
     public static string gameDataFileName = "Data.json";
 
-    void Start()
+    void Awake()
     {
         DontDestroyOnLoad(gameObject);
         //SceneManager.LoadScene("MainMenu");

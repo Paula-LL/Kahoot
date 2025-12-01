@@ -10,7 +10,7 @@ public class GameDataEditor : EditorWindow
 {
     public GameData gameData;
 
-    private string gameDataProjectDirectoryPath = "JsonAssets";
+    //private string gameDataProjectDirectoryPath = "JsonAssets";
 
     [MenuItem("Window/ Game Data Editor")]
 
@@ -73,7 +73,7 @@ public class GameDataEditor : EditorWindow
 
     string GetJsonDirectoryPath()
     {
-        return Path.Combine(Application.streamingAssetsPath, gameDataProjectDirectoryPath);
+        return Application.streamingAssetsPath;
     }
     string GetJsonFilePath()
     {
