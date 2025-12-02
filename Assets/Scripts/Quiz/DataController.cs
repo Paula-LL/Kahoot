@@ -21,7 +21,7 @@ public class DataController : MonoBehaviour
     }
 
     public GameRoundData GetCurrentGameRoundData() {
-        return allRoundsData[0];
+        return allRoundsData[playerProgress.currentRound];
     }
 
     private void LoadPlayerProgress() {
@@ -30,10 +30,34 @@ public class DataController : MonoBehaviour
         if (PlayerPrefs.HasKey("highestScore")) {
             playerProgress.highestScore = PlayerPrefs.GetInt("highestScore");
         }
+
+        if (PlayerPrefs.HasKey("currentRound")) {
+            playerProgress.currentRound = PlayerPrefs.GetInt("currentRound");
+        }
     }
 
     private void SavePlayerProgress() {
         PlayerPrefs.SetInt("highestScore", playerProgress.highestScore);
+    }
+
+    private void SaveRoundProgress() {
+        PlayerPrefs.SetInt("currentRound", playerProgress.currentRound);
+    }
+
+    public void ResetRoundProgress() {
+        playerProgress.currentRound = 0;
+        SaveRoundProgress();
+    }
+
+    public void GetNextRound() {
+        if (HasMoreRounds()) {
+            playerProgress.currentRound++;
+            SaveRoundProgress();
+        }
+    }
+
+    public bool HasMoreRounds() {
+        return (allRoundsData.Length - 1 > playerProgress.currentRound);
     }
 
     public void SubmitNewPlayerScore(int newScore) {

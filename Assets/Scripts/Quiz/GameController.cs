@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
 
     public GameObject questionDisplay;
     public GameObject roundEndDisplay;
+    public GameObject nextRoundDisplay;
 
 
     private DataController dataController;
@@ -35,16 +36,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         dataController = FindObjectOfType<DataController> ();
-        currentRoundData = dataController.GetCurrentGameRoundData();
-        questionPool = currentRoundData.questions;
-        timeRemaining = currentRoundData.timeLimit;
-        UpdateTimeRemeiningDisplay();
-
-        playerScore = 0;
-        questionIndex = 0;
-
-        ShowQuestion();
-        isRoundActive = true;
+        SetUpRound();
     }
 
     private void ShowQuestion() {
@@ -93,10 +85,41 @@ public class GameController : MonoBehaviour
         highScoreDisplay.text = dataController.GetPlayerHighestScore().ToString();
 
         questionDisplay.SetActive(false);
-        roundEndDisplay.SetActive(true);
+        roundEndDisplay.SetActive(true);    
+        
+        if (dataController.HasMoreRounds())
+        {
+            nextRoundDisplay.SetActive(true);
+        }
+        else {
+            nextRoundDisplay.SetActive(false);
+        }
     }
 
+    public void GoToNextRound() {
+        dataController.GetNextRound();
+        SetUpRound();
+        questionDisplay.SetActive(true);
+        roundEndDisplay.SetActive(false);
+    }
+
+    public void SetUpRound()
+    {
+        currentRoundData = dataController.GetCurrentGameRoundData();
+        questionPool = currentRoundData.questions;
+        timeRemaining = currentRoundData.timeLimit;
+        UpdateTimeRemeiningDisplay();
+
+        playerScore = 0;
+        questionIndex = 0;
+
+        ShowQuestion();
+        isRoundActive = true;
+    }
+
+
     public void ReturnToMenu() {
+        dataController.ResetRoundProgress();
         SceneManager.LoadScene("KahootSelector");
     }
 
@@ -115,6 +138,4 @@ public class GameController : MonoBehaviour
             }
         }
     }
-
-
 }
