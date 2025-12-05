@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using System.IO;
 using System.Globalization;
 using System;
 
+#if UNITY_EDITOR
+using UnityEditor;
 public class GameDataEditor : EditorWindow
 {
     public GameData gameData;
 
     //private string gameDataProjectDirectoryPath = "JsonAssets";
+
 
     [MenuItem("Window/GameDataEditor")]
 
@@ -77,7 +79,7 @@ public class GameDataEditor : EditorWindow
     }
     string GetJsonFilePath()
     {
-        return Path.Combine(GetJsonDirectoryPath(), DataController.gameDataFileName) ;
+        return Path.Combine(GetJsonDirectoryPath(), DataController.gameDataFileName);
     }
 
     private bool DirectoryExists(string path, bool forceCreate)
@@ -92,3 +94,5 @@ public class GameDataEditor : EditorWindow
         return Directory.Exists(path);
     }
 }
+#endif
+

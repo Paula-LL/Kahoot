@@ -17,27 +17,31 @@ public class JsonFileSelector : MonoBehaviour
         Debug.Log("JsonFileSelector actiu a: " + gameObject.name);
     }
 
-    void Start() {
+    void Start()
+    {
 
         Debug.Log("Script Started");
 
-        folderPath = Path.Combine(Application.persistentDataPath, "StreamingAssets");
+        folderPath = Path.Combine(Application.streamingAssetsPath);
 
-        if (!Directory.Exists(folderPath)) {
+        if (!Directory.Exists(folderPath))
+        {
             Directory.CreateDirectory(folderPath);
         }
 
         ShowJsonFiles();
     }
 
-    void ShowJsonFiles() { 
+    void ShowJsonFiles()
+    {
         string[] jsonFiles = Directory.GetFiles(folderPath, "*.json");
 
-        foreach (string filePath in jsonFiles) { 
+        foreach (string filePath in jsonFiles)
+        {
             string fileName = Path.GetFileName(filePath);
-            Button newButton = Instantiate(buttonPrefab);
+            Button newButton = Instantiate(buttonPrefab, contentPanel.transform);
             //newButton.transform.SetParent(contentPanel.transform, false);
-            newButton.GetComponent<TMPro.TextMeshProUGUI>().text = fileName;
+            newButton.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = fileName;
 
             newButton.onClick.AddListener(() =>
             {
@@ -50,7 +54,8 @@ public class JsonFileSelector : MonoBehaviour
         }
     }
 
-     void LoadJsonFiles(string path) { 
+    void LoadJsonFiles(string path)
+    {
         string json = File.ReadAllText(path);
 
         GameData data = JsonUtility.FromJson<GameData>(json);

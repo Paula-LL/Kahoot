@@ -30,60 +30,75 @@ public class DataController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
-    public GameRoundData GetCurrentGameRoundData() {
+    public GameRoundData GetCurrentGameRoundData()
+    {
         return allRoundsData[playerProgress.currentRound];
     }
 
-    private void LoadPlayerProgress() {
+    private void LoadPlayerProgress()
+    {
         playerProgress = new PlayerProgress();
 
-        if (PlayerPrefs.HasKey("highestScore")) {
+        if (PlayerPrefs.HasKey("highestScore"))
+        {
             playerProgress.highestScore = PlayerPrefs.GetInt("highestScore");
         }
 
-        if (PlayerPrefs.HasKey("currentRound")) {
+        if (PlayerPrefs.HasKey("currentRound"))
+        {
             playerProgress.currentRound = PlayerPrefs.GetInt("currentRound");
         }
     }
 
-    private void SavePlayerProgress() {
+    private void SavePlayerProgress()
+    {
         PlayerPrefs.SetInt("highestScore", playerProgress.highestScore);
     }
 
-    private void SaveRoundProgress() {
+    private void SaveRoundProgress()
+    {
         PlayerPrefs.SetInt("currentRound", playerProgress.currentRound);
     }
 
-    public void ResetRoundProgress() {
+    public void ResetRoundProgress()
+    {
         playerProgress.currentRound = 0;
         SaveRoundProgress();
     }
 
-    public void GetNextRound() {
-        if (HasMoreRounds()) {
+    public void GetNextRound()
+    {
+        if (HasMoreRounds())
+        {
             playerProgress.currentRound++;
             SaveRoundProgress();
         }
     }
 
-    public bool HasMoreRounds() {
+    public bool HasMoreRounds()
+    {
         return (allRoundsData.Length - 1 > playerProgress.currentRound);
     }
 
-    public void SubmitNewPlayerScore(int newScore) {
-        if (newScore > playerProgress.highestScore) { 
+    public void SubmitNewPlayerScore(int newScore)
+    {
+        if (newScore > playerProgress.highestScore)
+        {
             playerProgress.highestScore = newScore;
             SavePlayerProgress();
         }
     }
 
-    public int GetPlayerHighestScore() { 
+    public int GetPlayerHighestScore()
+    {
         return playerProgress.highestScore;
     }
 
-    private void LoadGameData() {
+    private void LoadGameData()
+    {
         string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
 
         if (File.Exists(filePath))
@@ -94,9 +109,10 @@ public class DataController : MonoBehaviour
 
             allRoundsData = loadedData.allRoundsData;
         }
-        else {
+        else
+        {
             Debug.LogError("Connot load game data");
-        } 
+        }
     }
 
     public void SetGameData(GameData newData)
@@ -106,10 +122,10 @@ public class DataController : MonoBehaviour
 
         Debug.Log("Datos del JSON aplicados al juego");
 
-    } 
+    }
 
     private void Update()
     {
-        
+
     }
 }
