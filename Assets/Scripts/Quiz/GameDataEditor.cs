@@ -12,7 +12,7 @@ public class GameDataEditor : EditorWindow
 
     //private string gameDataProjectDirectoryPath = "JsonAssets";
 
-    [MenuItem("Window/ Game Data Editor")]
+    [MenuItem("Window/GameDataEditor")]
 
     static void Init()
     {

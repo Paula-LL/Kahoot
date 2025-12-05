@@ -10,6 +10,8 @@ public class DataController : MonoBehaviour
     private PlayerProgress playerProgress;
     public static string gameDataFileName = "Data.json";
 
+    public static DataController Instance;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -18,6 +20,16 @@ public class DataController : MonoBehaviour
         LoadGameData();
 
         LoadPlayerProgress();
+
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public GameRoundData GetCurrentGameRoundData() {
@@ -86,6 +98,15 @@ public class DataController : MonoBehaviour
             Debug.LogError("Connot load game data");
         } 
     }
+
+    public void SetGameData(GameData newData)
+    {
+        allRoundsData = newData.allRoundsData;
+        playerProgress.currentRound = 0;
+
+        Debug.Log("Datos del JSON aplicados al juego");
+
+    } 
 
     private void Update()
     {
